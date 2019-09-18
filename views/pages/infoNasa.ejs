@@ -1,0 +1,31 @@
+<head>
+  <% include ../partials/head %>
+  <link href="../../public/projects.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+  <div class="container">
+    <% for(var i=0; i < data.length; i++) { %>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="row">
+          <div class="col-md-4">
+            <img
+              class="space-img"
+              src="<%= data[i].image_url %>"
+              alt=""
+              style="width: 100%; height: auto%; object-fit:cover"
+            />
+          </div>
+          <div class="col-md-8">
+            <h3 class="space-title"><%= data[i].name %></h3>
+            <h4 class="space-time">
+              <%= data[i].start_date %> - <%= data[i].end_date %>
+            </h4>
+            <p class="space-desc"><%= data[i].description %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% } %>
+  </div>
+</body>

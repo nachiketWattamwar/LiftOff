@@ -9,50 +9,25 @@
   </div>
 
   <span display="inline">
-    <div class="card" style="width: 18rem;">
+    <div class="card" style="width: 33rem;">
       <img
-        src="http://farm9.staticflickr.com/8337/8241913870_77dae6d471_m.jpg"
+        src="http://localhost:3000/nasa.jpg"
         class="card-img-top"
-        alt=""
+        alt="nasa logo"
       />
       <div class="card-body">
-        <h5 class="card-title">NASA</h5>
         <p class="card-text">
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
+          The National Aeronautics and Space Administration (NASA) is an
+          independent agency of the United States responsible for the civilian
+          space program,aeronautics and aerospace research
         </p>
         <a href="https://www.nasa.gov/" target="_blank" class="btn btn-primary"
-          >Visit Official Site</a
+          >Official Site</a
         >
         <a href="/auth/infoNasa" target="_blank" class="btn btn-primary"
-          >Visit info Site</a
+          >info Site</a
         >
       </div>
     </div>
   </span>
-  <div class="container">
-    <% for(var i=0; i < data.length; i++) { %>
-    <div class="row">
-      <div class="col-md-12">
-        <div class="row">
-          <div class="col-md-4">
-            <img
-              class="space-img"
-              src="<%= data[i].image_url %>"
-              alt=""
-              style="width: 100%; height: auto%; object-fit:cover"
-            />
-          </div>
-          <div class="col-md-8">
-            <h3 class="space-title"><%= data[i].name %></h3>
-            <h4 class="space-time">
-              <%= data[i].start_date %> - <%= data[i].end_date %>
-            </h4>
-            <p class="space-desc"><%= data[i].description %></p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <% } %>
-  </div>
 </body>

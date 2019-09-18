@@ -99,7 +99,7 @@ router.get("/login", function(req, res) {
   res.render("pages/login");
 });
 router.get("/infoNasa", function(req, res) {
-  res.render("pages/infoNasa");
+  res.render("pages/infoNasa", { data: nasaData });
 });
 
 router.post("/login", function(req, res, next) {
@@ -155,7 +155,7 @@ router.post("/signup", function(req, res) {
       console.log(newUser);
       console.log("Registered users:");
       console.log(registeredUsers);
-      res.redirect("/");
+      res.redirect("/auth/login");
     }
   }
 });
