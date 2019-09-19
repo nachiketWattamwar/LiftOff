@@ -1,8 +1,8 @@
 .space-img {
-  object-fit: contain;
-  height: 100%;
+  object-fit: cover;
+  height: auto;
   width: 100%;
 }
-body {
-  background-color: red;
+.separator {
+  height: 26px;
 }
