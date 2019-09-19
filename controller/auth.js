@@ -1,4 +1,4 @@
-var registeredUsers = [{ email: "nachiket@gmail.com", password: "nachiket" }];
+var registeredUsers = [{ email: "nachiket@gmail.com", password: "nachiket" },{ email: "admin@admin", password: "admin" }];
 var nasaData = require("../controller/spaceData");
 module.exports.getLogin = function(req, res) {
   res.render("pages/login");
