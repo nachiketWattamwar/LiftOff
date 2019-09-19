@@ -21,29 +21,5 @@ router.get("/about", function(req, res) {
   console.log("inside about");
   res.render("pages/about");
 });
-// /*
-//  * POST registration page.
-//  */
-// router.post("/register", ctrlMain.post_register);
-
-// /*
-//  * GET login page.
-//  */
-// router.get("/login", ctrlMain.get_login);
-
-// /*
-//  * POST login page.
-//  */
-// router.post("/login", ctrlMain.post_login);
-
-// /*
-//  * GET logout page.
-//  */
-// router.get("/logout", ctrlMain.get_logout);
-
-// /*
-//  * GET protected page.
-//  */
-// router.get("/protected", ctrlMain.loggedIn, ctrlMain.get_protected);
 
 module.exports = router;

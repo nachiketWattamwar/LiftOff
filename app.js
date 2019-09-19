@@ -14,23 +14,8 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(session({ secret: "String for encrypting cookies." }));
-
 app.get("/", index);
-
 app.use("/about", require("./routes/index"));
 app.use("/auth", require("./routes/auth"));
-
-// app.get("/about", function(req, res) {
-//   res.render("pages/about");
-// });
-
-// app.get("/login", function(req, res) {
-//   res.render("pages/login");
-// });
-
-// app.get("/signup", function(req, res) {
-//   res.render("pages/signup");
-// });
-
 app.listen(3000);
 console.log("listening on  3000");
