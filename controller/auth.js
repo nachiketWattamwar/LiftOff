@@ -1,17 +1,33 @@
-var registeredUsers = [{ email: "admin@admin", password: "admin" }];
+var registeredUsers = [
+  {
+    id: 1,
+    email: "admin@admin",
+    password: "$2b$10$3yryBFqI8by8PKGN6NWRu.im.wICQQm84nN5Y/3CMZ2bQTmnSOEJG"
+  }
+];
 var nasaData = require("../controller/spaceData");
+var bcrypt = require("bcrypt");
+const saltRounds = 10;
+
+module.exports.GetInfoNasa = function(req, res) {
+  res.render("pages/infoNasa", { data: nasaData });
+};
+
 module.exports.getLogin = function(req, res) {
   res.render("pages/login");
 };
 
-module.exports.postLogin = function(req, res, next) {
+module.exports.postLogin = function(req, res) {
   console.log("Registered users:");
   console.log(registeredUsers);
   console.log("Logging in: " + req.body.email + "/" + req.body.password);
 
   // Create an array of users with matching credentials.
   var matches = registeredUsers.filter(function(user) {
-    return user.email === req.body.email && user.password === req.body.password;
+    return (
+      user.email === req.body.email &&
+      bcrypt.compareSync(req.body.password, user.password)
+    );
   });
 
   console.log("Matching credentials: ");
@@ -21,10 +37,9 @@ module.exports.postLogin = function(req, res, next) {
     res.render("pages/invaliduser");
   } else {
     // The user is logged in for this session.
-    req.session.user = matches[0];
-    console.log("Sucessfully logged in:");
-    console.log(req.session.user.email);
-    console.log(req.cookies);
+    req.session.userID = matches[0].id;
+    console.log("session info is :");
+    console.log(req.session);
     //next();
     res.render("pages/loggedin", { username: req.body.email, data: nasaData });
   }
@@ -51,13 +66,16 @@ module.exports.postSignup = function(req, res) {
 
     // Register a new user.
     else {
+      var salt = bcrypt.genSaltSync(saltRounds);
+      var hash = bcrypt.hashSync(req.body.password, salt);
+
       var newUser = {
+        id: registeredUsers.length + 1,
         email: req.body.email,
-        password: req.body.password
+        password: hash
       };
+      req.session.userID = newUser.id;
       registeredUsers.push(newUser);
-      console.log("New user:");
-      console.log(newUser);
       console.log("Registered users:");
       console.log(registeredUsers);
       res.redirect("/auth/login");
