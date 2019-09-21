@@ -13,7 +13,20 @@ app.set("view engine", "ejs");
 app.use(express.static(path.join(__dirname, "public")));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(session({ secret: "String for encrypting cookies." }));
+app.use(
+  session({
+    name: "sid",
+    saveUninitialized: false,
+    resave: true,
+    secret: "String for encrypting cookies.",
+    httpOnly: true,
+    cookie: {
+      maxAge: 1000 * 60 * 60 * 2,
+      sameSite: true,
+      secure: true
+    }
+  })
+);
 app.get("/", index);
 app.use("/about", require("./routes/index"));
 app.use("/auth", require("./routes/auth"));
