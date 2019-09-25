@@ -6,3 +6,80 @@
 .separator {
   height: 26px;
 }
+
+#particles-js {
+  width: 100%;
+  height: 100%;
+  float: right;
+  position: absolute;
+  background-color: transparent;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  display: none;
+}
+.sapce-agency-title-div {
+  height: 200px;
+  margin: 20px;
+  text-align: center;
+}
+.shadow {
+  height: 200px;
+  width: 200px;
+  background-color: yellow;
+  box-shadow: 0 0 20px yellow;
+  position: relative;
+  float: left;
+  left: 50%;
+  border-radius: 50%;
+  -webkit-animation-name: shadow-animation;  /* Safari 4.0 - 8.0 */
+  -webkit-animation-duration: 3s;  /* Safari 4.0 - 8.0 */
+  -webkit-animation-fill-mode: forwards; /* Safari 4.0 - 8.0 */
+  animation-name: shadow-animation;
+  animation-duration: 3s;
+  animation-fill-mode: forwards;
+}
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes shadow-animation {
+  0%   {left:50%; top:0px;}
+  25%  {left:30%; top:0px;}
+  75%  {left:70%; top:0px;}
+  100% {left:50%; top:0px;}
+}
+
+/* Standard syntax */
+@keyframes shadow-animation {
+  0%   {left:50%; top:0px;}
+  25%  {left:30%; top:0px;}
+  75%  {left:70%; top:0px;}
+  100% {left:50%; top:0px; box-shadow: white; background-color: white;}
+}
+
+
+.sapce-agency-title-div img{
+  object-fit: cover;
+  height: 100%;
+  width: auto;
+  position: relative;
+  -webkit-animation-name: logo-animation;  /* Safari 4.0 - 8.0 */
+  -webkit-animation-duration: 3s;  /* Safari 4.0 - 8.0 */
+  -webkit-animation-fill-mode: forwards; /* Safari 4.0 - 8.0 */
+  animation-name: logo-animation;
+  animation-duration: 3s;
+  animation-fill-mode: forwards;
+}
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes logo-animation {
+  0%   {left:0px; top:0px;}
+  25%  {left:400px; top:0px;}
+  75%  {left:-400px; top:0px;}
+  100% {; left:0px; top:0px;}
+}
+
+/* Standard syntax */
+@keyframes logo-animation {
+  0%   {left:0px; top:0px;}
+  25%  {left:400px; top:0px;}
+  75%  {left:-400px; top:0px;}
+  100% {; left:0px; top:0px;}
+}
