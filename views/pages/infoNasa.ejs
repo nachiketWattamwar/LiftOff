@@ -1,18 +1,49 @@
 <head>
   <% include ../partials/head %>
   <link href="/projects.css" rel="stylesheet" type="text/css" />
+  <script>
+    function func1() {
+      //alert("inside func 1");
+      var element = document.getElementById("containerID");
+      element.classList.remove("mystyle");
+      console.log("inside func 1");
+
+      var element1 = document.getElementById("imageID");
+      //element1.classList.remove("myheader");
+      console.log("inside func 2");
+    }
+    function func2() {
+      //code for adding new class 3D
+
+      var element = document.getElementById("containerID");
+      element.classList.add("mystyle");
+      console.log("inside func 2");
+
+      var element1 = document.getElementById("imageID");
+      //element1.classList.add("myheader");
+      console.log("inside func 2");
+    }
+  </script>
 </head>
 <body>
-  <div class="container">
+  <div class="container" id="containerID">
     <% for(var i=0; i < data.length; i++) { %>
     <div class="row">
       <div class="col-md-12">
         <div class="row">
           <div class="col-md-4">
-            <img class="space-img" src="<%= data[i].image_url %>" alt="" />
+            <img
+              class="space-img"
+              onmousemove="func2(this)"
+              onmouseout="func1(this)"
+              src="<%= data[i].image_url %>"
+              alt=""
+            />
           </div>
-          <div class="col-md-8">
-            <h3 class="space-title"><%= data[i].name %></h3>
+          <div class="col-md-8" id="imageID">
+            <h3 class="space-title">
+              <%= data[i].name %>
+            </h3>
             <h4 class="space-time">
               <%= data[i].start_date %> - <%= data[i].end_date %>
             </h4>
