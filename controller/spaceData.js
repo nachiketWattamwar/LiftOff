@@ -92,7 +92,11 @@ var nasaData = [
 ];
 
 module.exports.nasaDatafunc = function(req, res) {
-  res.render("pages/infoNasa", { data: nasaData });
+  res.render("pages/infoNasa", {
+    data: nasaData,
+    clickHandler1: "func1();",
+    clickHandler2: "func2();"
+  });
 };
 
 module.exports.nasaData = nasaData;

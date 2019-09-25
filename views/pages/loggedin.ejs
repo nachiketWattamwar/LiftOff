@@ -1,6 +1,12 @@
 <head>
   <% include ../partials/head %>
   <link href="../../public/projects.css" rel="stylesheet" type="text/css" />
+
+  <script>
+    function func1() {
+      console.log("inside func1!");
+    }
+  </script>
 </head>
 
 <body class="container">
@@ -11,6 +17,7 @@
   <span display="inline">
     <div class="card" style="width: 33rem;">
       <img
+        onmouseover="func1(this)"
         src="http://localhost:3000/nasa.jpg"
         class="card-img-top"
         alt="nasa logo"
