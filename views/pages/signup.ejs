@@ -1,49 +1,57 @@
 <head>
   <% include ../partials/head %>
+  <script type="text/javascript" src="/validation.js"></script>
 </head>
 <body>
 <div class="container">
     <header>
         <% include ../partials/header %>
       </header>
-    <form class="form-horizontal" action="/auth/signup" method="POST">
+    <form name="SignUp" onsubmit="return validateSignUp()" class="form-horizontal" action="/auth/signup" method="POST">
       <div class="form-group">
-        <label class="control-label col-sm-2" for="email" name="email"
+          <label class="control-label col-sm-2" for="name"
+          >Name:</label>
+        <div class="col-sm-10">
+          <input
+            name="name"
+            type="text"
+            class="form-control"
+            id="name"
+            placeholder="Enter Name"
+          />
+        </div>
+        <label class="control-label col-sm-2" for="email"
           >Email:</label>
         <div class="col-sm-10">
           <input
             name="email"
-            type="email"
+            type="text"
             class="form-control"
             id="email"
-            placeholder="Enter email"
-            required
+            placeholder="Enter Email"
           />
         </div>
-      
-      <label class="control-label col-sm-2" for="emailagain" name="emailagain"
-      >Email:</label>
-    <div class="col-sm-10">
-      <input
-        name="emailagain"
-        type="email"
-        class="form-control"
-        id="emailagain"
-        placeholder="Enter email again"
-        required
-      />
-    </div>
-    <label class="control-label col-sm-2" for="pwd" name="password"
+    <label class="control-label col-sm-2" for="password"
     >Password:</label>
         <div class="col-sm-10">
           <input
             name="password"
             type="password"
             class="form-control"
-            id="pwd"
+            id="password"
             placeholder="Enter password"
-            required
             minlength="5"
+          />
+        </div>
+        <label class="control-label col-sm-2" for="phone"
+          >Phone:</label>
+        <div class="col-sm-10">
+          <input
+            name="phone"
+            type="text"
+            class="form-control"
+            id="phone"
+            placeholder="Enter Phone"
           />
         </div>
         <div class="col-sm-offset-2 col-sm-10">

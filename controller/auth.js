@@ -1,7 +1,7 @@
 var registeredUsers = [
   {
     id: 1,
-    email: "admin@admin",
+    email: "admin@admin.com",
     password: "$2b$10$3yryBFqI8by8PKGN6NWRu.im.wICQQm84nN5Y/3CMZ2bQTmnSOEJG"
   }
 ];
