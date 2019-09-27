@@ -23,9 +23,22 @@
       //element1.classList.add("myheader");
       console.log("inside func 2");
     }
+
+
   </script>
 </head>
 <body>
+
+    <canvas id="myCanvas" width="350" height="100" style="border:1px solid #d3d3d3;margin-left: 200px">
+        Your browser does not support the HTML5 canvas tag.</canvas>
+        
+        <script>
+        var c = document.getElementById("myCanvas");
+        var ctx = c.getContext("2d");
+        ctx.font = "30px Arial";
+        ctx.fontColor = "yellow";
+        ctx.fillText("Nasa Data on canvas",10,50);
+        </script>
   <div class="container" id="containerID">
   <div class="sapce-agency-title-div">
     <div class="shadow"></div>
