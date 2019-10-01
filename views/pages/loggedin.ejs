@@ -1,11 +1,45 @@
 <head>
   <% include ../partials/head %>
   <link href="../../public/projects.css" rel="stylesheet" type="text/css" />
+  <link href="/projects.css" rel="stylesheet" type="text/css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>jQuery UI Draggable - Default functionality</title>
+  <link
+    rel="stylesheet"
+    href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
+  />
+  <link rel="stylesheet" href="/resources/demos/style.css" />
+  <style>
+    #draggable {
+      width: 150px;
+      height: 150px;
+      padding: 0.5em;
+    }
+    #droppable {
+      width: 350px;
+      height: 250px;
+      padding: 0.5em;
+      float: left;
+      margin-left: 500px;
+      margin-bottom: 200px;
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
   <script>
-    function func1() {
-      console.log("inside func1!");
-    }
+    $(function() {
+      $("#draggable").draggable();
+      $("#droppable").resizable();
+      $("#droppable").droppable({
+        drop: function(event, ui) {
+          $(this)
+            .addClass("ui-state-highlight")
+            .find("p")
+            .html("Dropped!");
+        }
+      });
+    });
   </script>
 </head>
 
@@ -15,13 +49,20 @@
   </div>
 
   <span display="inline">
-    <div class="card" style="width: 33rem;">
-      <img
-        onmouseover="func1(this)"
-        src="http://localhost:3000/nasa.jpg"
-        class="card-img-top"
-        alt="nasa logo"
-      />
+    <div
+      class="card"
+      style="width: 33rem;"
+      id="draggable"
+      class="ui-widget-content"
+    >
+      <div>
+        <img
+          src="http://localhost:3000/nasa.jpg"
+          class="card-img-top"
+          alt="nasa logo"
+        />
+      </div>
+
       <div class="card-body">
         <p class="card-text">
           The National Aeronautics and Space Administration (NASA) is an
@@ -35,6 +76,9 @@
           >info Site</a
         >
       </div>
+    </div>
+    <div id="droppable" class="ui-widget-header">
+      <p>Drop here</p>
     </div>
   </span>
 </body>
