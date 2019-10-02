@@ -1,5 +1,5 @@
 <head>
-  <% include ../partials/head %>
+  <% include ../partials/head %> <% include ../partials/logout %>
   <link href="../../public/projects.css" rel="stylesheet" type="text/css" />
   <link href="/projects.css" rel="stylesheet" type="text/css" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -45,7 +45,7 @@
 
 <body class="container">
   <div class="jumbotron">
-    <h1 class="display-1">welcome</h1>
+    <h1 class="display-1">Welcome</h1>
   </div>
 
   <span display="inline">
@@ -72,7 +72,10 @@
         <a href="https://www.nasa.gov/" target="_blank" class="btn btn-primary"
           >Official Site</a
         >
-        <a href="/auth/infoNasa" target="_blank" class="btn btn-primary"
+        <a
+          href="/privateRoutes/infoNasa"
+          target="_blank"
+          class="btn btn-primary"
           >info Site</a
         >
       </div>
