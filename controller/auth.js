@@ -13,14 +13,30 @@ module.exports.GetInfoNasa = function(req, res) {
   res.render("pages/infoNasa", { data: nasaData });
 };
 
+module.exports.getDashboard = function(req, res) {
+  console.log("==============dashboard=============", req.session);
+  res.render("pages/loggedin");
+};
+
+module.exports.logout = function(req, res) {
+  console.log("session data ", req.session);
+  req.session.destroy(err => {
+    if (err) {
+      return console.log(err);
+    }
+    console.log("session destroyed");
+  });
+  res.redirect("/auth/login");
+};
+
 module.exports.getLogin = function(req, res) {
   res.render("pages/login");
 };
 
 module.exports.postLogin = function(req, res) {
-  console.log("Registered users:");
-  console.log(registeredUsers);
-  console.log("Logging in: " + req.body.email + "/" + req.body.password);
+  //console.log("Registered users:");
+  //console.log(registeredUsers);
+  //console.log("Logging in: " + req.body.email + "/" + req.body.password);
 
   // Create an array of users with matching credentials.
   var matches = registeredUsers.filter(function(user) {
@@ -30,8 +46,8 @@ module.exports.postLogin = function(req, res) {
     );
   });
 
-  console.log("Matching credentials: ");
-  console.log(matches);
+  //console.log("Matching credentials: ");
+  //console.log(matches);
 
   if (matches.length === 0) {
     res.render("pages/invaliduser");
@@ -41,12 +57,8 @@ module.exports.postLogin = function(req, res) {
     console.log("session info is :");
     console.log(req.session);
     //next();
-    res.render("pages/loggedin", { username: req.body.email, data: nasaData });
+    res.redirect("/privateRoutes/dashboard");
   }
-};
-
-module.exports.getSignup = function(req, res) {
-  res.render("pages/signup");
 };
 
 module.exports.postSignup = function(req, res) {
@@ -76,9 +88,9 @@ module.exports.postSignup = function(req, res) {
       };
       req.session.userID = newUser.id;
       registeredUsers.push(newUser);
-      console.log("Registered users:");
-      console.log(registeredUsers);
-      res.redirect("/auth/login");
+      console.log("session  info:");
+      console.log(req.session);
+      res.redirect("/privateRoutes/dashboard");
     }
   }
 };

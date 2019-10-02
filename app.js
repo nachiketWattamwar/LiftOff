@@ -3,6 +3,7 @@ var app = express();
 var path = require("path");
 var index = require("./routes/index");
 var bodyParser = require("body-parser");
+var cookieParser = require("cookie-parser");
 var session = require("express-session");
 
 // view engine setup
@@ -13,13 +14,11 @@ app.set("view engine", "ejs");
 app.use(express.static(path.join(__dirname, "public")));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cookieParser());
 app.use(
   session({
-    name: "sid",
-    saveUninitialized: false,
-    resave: true,
+    key: "sid",
     secret: "String for encrypting cookies.",
-    httpOnly: true,
     cookie: {
       maxAge: 1000 * 60 * 60 * 2,
       sameSite: true,
@@ -27,8 +26,30 @@ app.use(
     }
   })
 );
+
+var checkUser = function(req, res, next) {
+  if (req.session) {
+    console.log("inside checkuser if ");
+    next();
+  } else {
+    console.log("inside checkuser else ");
+    res.redirect("/login");
+  }
+};
+
+var getLogin = function(req, res) {
+  res.render("pages/login");
+};
+
+var getSignup = function(req, res) {
+  res.render("pages/signup");
+};
+
 app.get("/", index);
 app.use("/about", require("./routes/index"));
 app.use("/auth", require("./routes/auth"));
+app.use("/privateRoutes", checkUser, require("./routes/privateRoutes"));
+app.use("/login", getLogin);
+app.use("/signup", getSignup);
 app.listen(3000);
 console.log("listening on  3000");
