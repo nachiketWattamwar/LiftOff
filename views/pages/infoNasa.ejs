@@ -4,52 +4,15 @@
   <link href="/projects.css" rel="stylesheet" type="text/css" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-
-  <script>
-      
-    function func1() {
-      //alert("inside func 1");
-      var element = document.getElementById("containerID");
-      element.classList.remove("mystyle");
-      console.log("inside func 1");
-
-      var element1 = document.getElementById("imageID");
-      //element1.classList.remove("myheader");
-      console.log("inside func 2");
-    }
-    function func2() {
-      //code for adding new class 3D
-
-      var element = document.getElementById("containerID");
-      element.classList.add("mystyle");
-      console.log("inside func 2");
-
-      var element1 = document.getElementById("imageID");
-      //element1.classList.add("myheader");
-      console.log("inside func 2");
-    }
-
-
-  </script>
-
 </head>
 <body>
-
-    <canvas id="myCanvas" width="350" height="100" style="border:1px solid #d3d3d3;margin-left: 200px">
-        Your browser does not support the HTML5 canvas tag.</canvas>
-        
-        <script>
-        var c = document.getElementById("myCanvas");
-        var ctx = c.getContext("2d");
-        ctx.font = "30px Arial";
-        ctx.fontColor = "yellow";
-        ctx.fillText("Nasa Data on canvas",10,50);
-        </script>
+  <canvas id="canvas"></canvas>
   <div class="container" id="containerID">
   <div class="sapce-agency-title-div">
     <div class="shadow"></div>
     <img src="https://www.nasa.gov/sites/default/files/thumbnails/image/nasa-logo-web-rgb.png">
   </div>
+
   <div class="container">
     <% for(var i=0; i < data.length; i++) { %>
     <div class="row">
@@ -58,10 +21,8 @@
           <div class="col-md-4">
             <img
               class="space-img"
-              onmousemove="func2(this)"
-              onmouseout="func1(this)"
               src="<%= data[i].image_url %>"
-              alt=""
+              alt=""4085959537
             />
           </div>
           <div class="col-md-8" id="imageID">
@@ -79,8 +40,9 @@
     <div class="separator"></div>
     <% } %>
   </div>
-  <div id="particles-js"></div>
+  </div>
 
-  <script type="text/javascript" src="/particles.js"></script>
-  <script type="text/javascript" src="/config.js"></script>
+
+
+  <script type="text/javascript" src="/canvas.js"></script>
 </body>

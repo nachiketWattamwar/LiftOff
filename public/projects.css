@@ -25,6 +25,7 @@
   height: 200px;
   margin: 20px;
   text-align: center;
+  margin-bottom: 300px;
 }
 .shadow {
   height: 200px;
@@ -134,4 +135,9 @@
     left: 0px;
     top: 0px;
   }
+}
+#canvas {
+  position: absolute;
+  background: rgb(15,32,39);
+background: linear-gradient(180deg, rgba(15,32,39,1) 0%, rgba(32,58,67,1) 47%, rgba(44,83,100,1) 100%);
 }
