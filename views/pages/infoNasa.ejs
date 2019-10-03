@@ -2,6 +2,8 @@
   <% include ../partials/head %>
   <% include ../partials/logout %>
   <link href="/projects.css" rel="stylesheet" type="text/css" />
+  <link href="https://fonts.googleapis.com/css?family=Mansalva&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Notable|Playfair+Display&display=swap" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
 </head>
@@ -42,7 +44,70 @@
   </div>
   </div>
 
+  <div class="container galaxy-container">
+    <div class="galaxy-title">
+      <h1>Beautiful Galaxies</h1>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="row">
+          <div id="1" class="col-md-12 const-name">
+            <span>The Sombrero Galaxy<span>
+          </div>
+          <div id="2" class="col-md-12 const-name">
+            <span>The Black-Eye Galaxy<span>
+          </div>
+          <div id='3' class="col-md-12 const-name">
+            <span>The Whirlpool Galaxy<span>
+          </div>
+          <div id='4' class="col-md-12 const-name">
+            <span>Supernova 1987a<span>
+          </div>
+          <div id='5' class="col-md-12 const-name">
+            <span>Grand design spiral galaxy<span>
+          </div>
+          <div id='6' class="col-md-12 const-name">
+            <span>Messier 81<span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div id="preview-div">
 
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+  <script>
+    var stars = ["http://cdn.spacetelescope.org/archives/images/screen/opo0328a.jpg",
+    "https://upcosmos.com/wp-content/uploads/2018/01/black-eye-galaxy.jpeg",
+    "https://www.nasa.gov/sites/default/files/thumbnails/image/m51-and-companion_0.jpg",
+    "https://www.nasa.gov/sites/default/files/thumbnails/image/stsci-h-p1708a-m-1823x2000.png",
+    "https://upload.wikimedia.org/wikipedia/commons/7/75/Ssc2003-06c.jpg",
+    "https://www.nasa.gov/sites/default/files/thumbnails/image/m81-print.jpg"];
+
+    $(function() {
+      $("#1").draggable();
+      $("#2").draggable();
+      $("#3").draggable();
+      $("#4").draggable();
+      $("#5").draggable();
+      $("#6").draggable();
+      $("#preview-div").resizable();
+      $("#preview-div").droppable({
+        drop: function(event, ui) {
+          $(this)
+            .addClass("ui-state-highlight")
+            .css("background-image", 'url('+stars[ui.draggable.prop('id') - 1]+')')
+            .html(ui.draggable.prop('id'));
+        }
+      });
+    });
+  </script>
 
   <script type="text/javascript" src="/canvas.js"></script>
 </body>
