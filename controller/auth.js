@@ -26,7 +26,7 @@ module.exports.logout = function(req, res) {
     }
     console.log("session destroyed");
   });
-  res.redirect("/auth/login");
+  res.redirect("/login");
 };
 
 module.exports.getLogin = function(req, res) {

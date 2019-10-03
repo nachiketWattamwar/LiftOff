@@ -1,47 +1,74 @@
 <head>
-  <% include ../partials/head %>
-  <% include ../partials/logout %>
+  <% include ../partials/head %> <% include ../partials/logout %>
   <link href="/projects.css" rel="stylesheet" type="text/css" />
   <link href="https://fonts.googleapis.com/css?family=Mansalva&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Notable|Playfair+Display&display=swap" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script>
+    function func1() {
+      //alert("inside func 1");
+      var element = document.getElementById("containerID");
+      element.classList.remove("mystyle");
+      console.log("inside func 1");
+      var element1 = document.getElementById("imageID");
+      //element1.classList.remove("myheader");
+      console.log("inside func 2");
+    }
+    function func2() {
+      //code for adding new class 3D
+      var element = document.getElementById("containerID");
+      element.classList.add("mystyle");
+      console.log("inside func 2");
+      var element1 = document.getElementById("imageID");
+      //element1.classList.add("myheader");
+      console.log("inside func 2");
+    }
+  </script>
 </head>
 <body>
   <canvas id="canvas"></canvas>
   <div class="container" id="containerID">
-  <div class="sapce-agency-title-div">
-    <div class="shadow"></div>
-    <img src="https://www.nasa.gov/sites/default/files/thumbnails/image/nasa-logo-web-rgb.png">
-  </div>
+    <div class="sapce-agency-title-div">
+      <div class="shadow"></div>
+      <img
+        src="https://www.nasa.gov/sites/default/files/thumbnails/image/nasa-logo-web-rgb.png"
+      />
+    </div>
 
-  <div class="container">
-    <% for(var i=0; i < data.length; i++) { %>
-    <div class="row">
-      <div class="col-md-12">
-        <div class="row">
-          <div class="col-md-4">
-            <img
-              class="space-img"
-              src="<%= data[i].image_url %>"
-              alt=""4085959537
-            />
-          </div>
-          <div class="col-md-8" id="imageID">
-            <h3 class="space-title">
-              <%= data[i].name %>
-            </h3>
-            <h4 class="space-time">
-              <%= data[i].start_date %> - <%= data[i].end_date %>
-            </h4>
-            <p class="space-desc"><%= data[i].description %></p>
+    <div class="container">
+      <% for(var i=0; i < data.length; i++) { %>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="row">
+            <div class="col-md-4">
+              <img
+                onmousemove="func2(this)"
+                onmouseout="func1(this)"
+                class="space-img"
+                src="<%= data[i].image_url %>"
+                alt=""
+                4085959537
+              />
+            </div>
+            <div class="col-md-8" id="imageID">
+              <h3 class="space-title">
+                <%= data[i].name %>
+              </h3>
+              <h4 class="space-time">
+                <%= data[i].start_date %> - <%= data[i].end_date %>
+              </h4>
+              <p class="space-desc"><%= data[i].description %></p>
+            </div>
           </div>
         </div>
       </div>
+      <div class="separator"></div>
+      <% } %>
     </div>
-    <div class="separator"></div>
-    <% } %>
   </div>
+<<<<<<< HEAD
   </div>
 
   <div class="container galaxy-container">
@@ -108,6 +135,8 @@
       });
     });
   </script>
+=======
+>>>>>>> logout error fixed
 
   <script type="text/javascript" src="/canvas.js"></script>
 </body>
