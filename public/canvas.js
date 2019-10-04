@@ -29,7 +29,6 @@ window.addEventListener('mousemove',
   function(event) {
     mouse.x = event.x;
     mouse.y = event.y;
-    console.log(event)
 })
 
 function Circle(x, y, dx, dy, radius){

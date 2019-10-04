@@ -1,22 +1,60 @@
 <head>
-  <% include ../partials/head %>
-  <% include ../partials/logout %>
+  <% include ../partials/head %> <% include ../partials/logout %>
   <link href="/projects.css" rel="stylesheet" type="text/css" />
+  <link href="https://fonts.googleapis.com/css?family=Mansalva&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Notable|Playfair+Display&display=swap" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script>
+    function func1() {
+      //alert("inside func 1");
+      var element = document.getElementById("containerID");
+      element.classList.remove("mystyle");
+      console.log("inside func 1");
+      var element1 = document.getElementById("imageID");
+      //element1.classList.remove("myheader");
+      console.log("inside func 2");
+    }
+    function func2() {
+      //code for adding new class 3D
+      var element = document.getElementById("containerID");
+      element.classList.add("mystyle");
+      console.log("inside func 2");
+      var element1 = document.getElementById("imageID");
+      //element1.classList.add("myheader");
+      console.log("inside func 2");
+    }
+  </script>
 </head>
 <body>
   <canvas id="canvas"></canvas>
   <div class="container" id="containerID">
-  <div class="sapce-agency-title-div">
-    <div class="shadow"></div>
-    <img src="https://www.nasa.gov/sites/default/files/thumbnails/image/nasa-logo-web-rgb.png">
+    <div class="sapce-agency-title-div">
+      <div class="shadow"></div>
+      <img
+        src="https://www.nasa.gov/sites/default/files/thumbnails/image/nasa-logo-web-rgb.png"
+      />
+    </div>
+
+  <div id="nasa-info" class="ui-widget-header">
+    <span>
+      The National Aeronautics and Space Administration (NASA, /ˈnæsə/) is an independent agency of the United States Federal Government responsible for the civilian space program, as well as aeronautics and aerospace research.
+    </span>
+    <span>
+      NASA was established in 1958, succeeding the National Advisory Committee for Aeronautics (NACA). The new agency was to have a distinctly civilian orientation, encouraging peaceful applications in space science. Since its establishment, most US space exploration efforts have been led by NASA, including the Apollo Moon landing missions, the Skylab space station, and later the Space Shuttle. NASA is supporting the International Space Station and is overseeing the development of the Orion Multi-Purpose Crew Vehicle, the Space Launch System and Commercial Crew vehicles. The agency is also responsible for the Launch Services Program which provides oversight of launch operations and countdown management for unmanned NASA launches.
+    </span>
+    <span>
+      NASA science is focused on better understanding Earth through the Earth Observing System; advancing heliophysics through the efforts of the Science Mission Directorate's Heliophysics Research Program; exploring bodies throughout the Solar System with advanced robotic spacecraft missions such as New Horizons; and researching astrophysics topics, such as the Big Bang, through the Great Observatories and associated programs.
+
+    </span>
   </div>
 
   <div class="container">
+
     <% for(var i=0; i < data.length; i++) { %>
     <div class="row">
-      <div class="col-md-12">
+      <div class="col-md-12 sapce-project">
         <div class="row">
           <div class="col-md-4">
             <img
@@ -36,13 +74,78 @@
           </div>
         </div>
       </div>
+      <div class="separator"></div>
+      <% } %>
     </div>
-    <div class="separator"></div>
-    <% } %>
   </div>
   </div>
 
+  <div class="container galaxy-container">
+    <div class="galaxy-title">
+      <h1>Beautiful Galaxies</h1>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="row">
+          <div id="1" class="col-md-12 const-name">
+            <span>The Sombrero Galaxy<span>
+          </div>
+          <div id="2" class="col-md-12 const-name">
+            <span>The Black-Eye Galaxy<span>
+          </div>
+          <div id='3' class="col-md-12 const-name">
+            <span>The Whirlpool Galaxy<span>
+          </div>
+          <div id='4' class="col-md-12 const-name">
+            <span>Supernova 1987a<span>
+          </div>
+          <div id='5' class="col-md-12 const-name">
+            <span>Grand design spiral galaxy<span>
+          </div>
+          <div id='6' class="col-md-12 const-name">
+            <span>Messier 81<span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div id="preview-div">
 
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+  <script>
+    var stars = ["http://cdn.spacetelescope.org/archives/images/screen/opo0328a.jpg",
+    "https://upcosmos.com/wp-content/uploads/2018/01/black-eye-galaxy.jpeg",
+    "https://www.nasa.gov/sites/default/files/thumbnails/image/m51-and-companion_0.jpg",
+    "https://www.nasa.gov/sites/default/files/thumbnails/image/stsci-h-p1708a-m-1823x2000.png",
+    "https://upload.wikimedia.org/wikipedia/commons/7/75/Ssc2003-06c.jpg",
+    "https://www.nasa.gov/sites/default/files/thumbnails/image/m81-print.jpg"];
+
+    $(function() {
+      $("#nasa-info").resizable();
+
+
+      $("#1").draggable();
+      $("#2").draggable();
+      $("#3").draggable();
+      $("#4").draggable();
+      $("#5").draggable();
+      $("#6").draggable();
+      $("#preview-div").droppable({
+        drop: function(event, ui) {
+          $(this)
+            .addClass("ui-state-highlight")
+            .css("background-image", 'url('+stars[ui.draggable.prop('id') - 1]+')')
+            .html(ui.draggable.prop('id'));
+        }
+      });
+    });
+  </script>
 
   <script type="text/javascript" src="/canvas.js"></script>
 </body>

@@ -27,6 +27,10 @@
   text-align: center;
   margin-bottom: 300px;
 }
+
+.space-project {
+  margin: 20px;
+}
 .shadow {
   height: 200px;
   width: 200px;
@@ -140,4 +144,57 @@
   position: absolute;
   background: rgb(15,32,39);
 background: linear-gradient(180deg, rgba(15,32,39,1) 0%, rgba(32,58,67,1) 47%, rgba(44,83,100,1) 100%);
+}
+
+.galaxy-container{
+  margin-top: 20px;
+  margin-bottom: 100px;
+}
+
+.galaxy-title {
+  border-bottom: 10px solid;
+  border-image-source: linear-gradient(45deg, rgb(0,143,104), rgb(250,224,66));
+  border-image-slice: 1;
+  width: fit-content;
+  margin-bottom: 20px;
+  /*font-family: 'Notable', sans-serif;*/
+}
+
+.galaxy-title h1{
+  font-size: 50px;
+  font-family: 'Playfair Display', serif;
+}
+
+#preview-div {
+  border: 1px solid black;
+  min-height: 500px;
+  background-size: cover;
+}
+
+.const-name {
+  font-size: 28px;
+  font-family: 'Mansalva', cursive;
+}
+
+.const-name span1 {
+  border-bottom: 5px solid;
+  border-image-source: linear-gradient(to right,#fce3ec,#ffe8cc);
+  border-image-slice: 1;
+  width: fit-content;
+  margin-bottom: 5px;
+}
+
+.const-name span {
+  background: linear-gradient(to right,#fce3ec,#ffe8cc);
+  margin-bottom: 5px;
+}
+#nasa-info {
+  border: 2px solid;
+  padding: 20px;
+  width: 80%;
+  resize: both;
+  overflow: auto;
+  font-size: 20px;
+  margin-bottom: 50px;
+  font-family: 'Playfair Display', serif;
 }
