@@ -20,13 +20,14 @@ module.exports.getDashboard = function(req, res) {
 
 module.exports.logout = function(req, res) {
   console.log("session data ", req.session);
+  res.clearCookie("MyCookieInfo");
   req.session.destroy(err => {
     if (err) {
       return console.log(err);
     }
     console.log("session destroyed");
   });
-  res.redirect("/auth/login");
+  res.redirect("/login");
 };
 
 module.exports.getLogin = function(req, res) {
@@ -46,14 +47,15 @@ module.exports.postLogin = function(req, res) {
     );
   });
 
-  //console.log("Matching credentials: ");
-  //console.log(matches);
+  console.log("Matching credentials: ");
+  console.log(matches[0]);
 
   if (matches.length === 0) {
     res.render("pages/invaliduser");
   } else {
     // The user is logged in for this session.
     req.session.userID = matches[0].id;
+    res.cookie("MyCookieInfo", matches[0]);
     console.log("session info is :");
     console.log(req.session);
     //next();
@@ -87,10 +89,11 @@ module.exports.postSignup = function(req, res) {
         password: hash
       };
       req.session.userID = newUser.id;
+      res.cookie("MyCookieInfo", newUser);
       registeredUsers.push(newUser);
       console.log("session  info:");
       console.log(req.session);
-      res.redirect("/privateRoutes/dashboard");
+      res.redirect("/login");
     }
   }
 };

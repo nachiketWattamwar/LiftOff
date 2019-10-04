@@ -10,7 +10,8 @@ router.get("/", function(req, res) {
 
 router.get("/about", function(req, res) {
   console.log("inside about");
-  res.render("pages/about");
+  //res.render("pages/about");
+  res.render("pages/about2");
 });
 
 module.exports = router;

@@ -28,11 +28,11 @@ app.use(
 );
 
 var checkUser = function(req, res, next) {
-  if (req.session) {
-    console.log("inside checkuser if ");
+  if (req.cookies.MyCookieInfo) {
+    console.log("inside checkuser if ", req.cookies.MyCookieInfo);
     next();
   } else {
-    console.log("inside checkuser else ");
+    console.log("inside checkuser else ", req.cookies);
     res.redirect("/login");
   }
 };
