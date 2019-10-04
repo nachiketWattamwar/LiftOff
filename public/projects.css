@@ -184,3 +184,13 @@ background: linear-gradient(180deg, rgba(15,32,39,1) 0%, rgba(32,58,67,1) 47%, r
   background: linear-gradient(to right,#fce3ec,#ffe8cc);
   margin-bottom: 5px;
 }
+#nasa-info {
+  border: 2px solid;
+  padding: 20px;
+  width: 80%;
+  resize: both;
+  overflow: auto;
+  font-size: 20px;
+  margin-bottom: 50px;
+  font-family: 'Playfair Display', serif;
+}

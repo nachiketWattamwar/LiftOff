@@ -15,7 +15,21 @@
     <img src="https://www.nasa.gov/sites/default/files/thumbnails/image/nasa-logo-web-rgb.png">
   </div>
 
+  <div id="nasa-info" class="ui-widget-header">
+    <span>
+      The National Aeronautics and Space Administration (NASA, /ˈnæsə/) is an independent agency of the United States Federal Government responsible for the civilian space program, as well as aeronautics and aerospace research.
+    </span>
+    <span>
+      NASA was established in 1958, succeeding the National Advisory Committee for Aeronautics (NACA). The new agency was to have a distinctly civilian orientation, encouraging peaceful applications in space science. Since its establishment, most US space exploration efforts have been led by NASA, including the Apollo Moon landing missions, the Skylab space station, and later the Space Shuttle. NASA is supporting the International Space Station and is overseeing the development of the Orion Multi-Purpose Crew Vehicle, the Space Launch System and Commercial Crew vehicles. The agency is also responsible for the Launch Services Program which provides oversight of launch operations and countdown management for unmanned NASA launches.
+    </span>
+    <span>
+      NASA science is focused on better understanding Earth through the Earth Observing System; advancing heliophysics through the efforts of the Science Mission Directorate's Heliophysics Research Program; exploring bodies throughout the Solar System with advanced robotic spacecraft missions such as New Horizons; and researching astrophysics topics, such as the Big Bang, through the Great Observatories and associated programs.
+      
+    </span>
+  </div>
+
   <div class="container">
+
     <% for(var i=0; i < data.length; i++) { %>
     <div class="row">
       <div class="col-md-12">
@@ -91,13 +105,15 @@
     "https://www.nasa.gov/sites/default/files/thumbnails/image/m81-print.jpg"];
 
     $(function() {
+      $("#nasa-info").resizable();
+
+
       $("#1").draggable();
       $("#2").draggable();
       $("#3").draggable();
       $("#4").draggable();
       $("#5").draggable();
       $("#6").draggable();
-      $("#preview-div").resizable();
       $("#preview-div").droppable({
         drop: function(event, ui) {
           $(this)
