@@ -3,7 +3,7 @@ var mongoose = require("mongoose");
 mongoose.Promise = global.Promise;
 
 mongoose.connect(
-    "mongodb://cmpe280:cmpe280@ds335668.mlab.com:35668/cmpe280",{
+    "mongodb+srv://admin:admin@cluster0-nywer.mongodb.net/test?retryWrites=true&w=majority",{
     poolSize: 10
     // other options can go here
   },
