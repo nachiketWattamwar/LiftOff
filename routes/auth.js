@@ -10,4 +10,16 @@ router.post("/signup", routeNames.postSignup);
 //logging out
 router.get("/logout", routeNames.logout);
 
+//crud display all
+router.get("/crud", routeNames.getCrud);
+
+//crud add new entry
+router.post("/newEntry", routeNames.addNewEntry);
+
+//crud update new entry
+router.post("/postUpdateEntry", routeNames.updateEntry);
+
+//crud update new entry
+router.post("/postDeleteEntry", routeNames.deleteEntry);
+
 module.exports = router;
