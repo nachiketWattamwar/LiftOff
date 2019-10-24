@@ -1,11 +1,6 @@
 <head>
   <% include ../partials/head %>
 
-  <script>
-    function myfunc() {
-      alert("Alert");
-    }
-  </script>
 </head>
 
 <body>
@@ -49,7 +44,7 @@
     <tbody> -->
       <% for(var i=0; i < data.length; i++) { %>
 
-        <form name="SignUp" onsubmit="return validateSignUp()" class="form-horizontal" action="/auth/signup" method="GET">
+        <form name="DisplayAndUpdateEntry" class="form-horizontal" action="/auth/postUpdateEntry" method="GET">
             <div class="form-group">
                 <label class="control-label col-sm-2" for="name"
                 >Name:</label>
@@ -63,11 +58,11 @@
                   value="<%= data[i].name %>"
                 />
               </div>
-              <label class="control-label col-sm-2" for="email"
+              <label class="control-label col-sm-2" for="descp"
                 >descp:</label>
               <div class="col-sm-10">
                 <input
-                  name="email"
+                  name="descp"
                   type="text"
                   class="form-control"
                   id="email"
@@ -93,4 +88,43 @@
       <% } %>
     </tbody>
   </table>
+
+  <div>
+    <p>
+        Create new entry:
+    </p>
+
+  </div>
+  <form name="NewEntryForm" class="form-horizontal" action="/auth/NewEntry" method="GET">
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="name"
+        >Name:</label>
+      <div class="col-sm-10">
+        <input
+          name="name"
+          type="text"
+          class="form-control"
+          id="name"
+          placeholder="Enter name"
+
+        />
+      </div>
+      <label class="control-label col-sm-2" for="descp"
+        >descp:</label>
+      <div class="col-sm-10">
+        <input
+          name="descp"
+          type="text"
+          class="form-control"
+          id="email"
+          placeholder="Enter descp"
+
+        />
+      </div>
+
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-success">Add</button>
+      </div>
+    </div>
+  </form>
 </body>
