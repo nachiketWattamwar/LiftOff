@@ -22,4 +22,7 @@ router.post("/postUpdateEntry", routeNames.updateEntry);
 //crud update new entry
 router.post("/postDeleteEntry", routeNames.deleteEntry);
 
+//search
+router.post("/search", routeNames.search);
+
 module.exports = router;
