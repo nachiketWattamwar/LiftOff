@@ -7,7 +7,7 @@ const { Schema } = require("./controller/etl");
 var bodyParser = require("body-parser");
 var cookieParser = require("cookie-parser");
 var session = require("express-session");
-var {myfunc} = require("../LiftOff/controller/etl");
+var { myfunc } = require("../asgmnt2/controller/etl");
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
@@ -29,7 +29,7 @@ app.use(
   })
 );
 
-myfunc();   //etl
+myfunc(); //etl
 var checkUser = function(req, res, next) {
   if (req.cookies.MyCookieInfo) {
     console.log("inside checkuser if ", req.cookies.MyCookieInfo);
