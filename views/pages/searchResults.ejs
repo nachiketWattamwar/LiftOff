@@ -1,0 +1,27 @@
+<head>
+  <% include ../partials/head %>
+</head>
+<body>
+  <div>
+    <label class="control-label col-sm-2" for="name">Name:</label>
+    <div class="col-sm-10">
+      <input
+        name="name"
+        type="text"
+        class="form-control"
+        id="name"
+        value="<%= data.name %>"
+      />
+    </div>
+    <label class="control-label col-sm-2" for="descp">descp:</label>
+    <div class="col-sm-10">
+      <input
+        name="descp"
+        type="text"
+        class="form-control"
+        id="email"
+        value="<%= data.descp %>"
+      />
+    </div>
+  </div>
+</body>

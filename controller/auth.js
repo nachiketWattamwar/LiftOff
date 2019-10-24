@@ -121,7 +121,12 @@ module.exports.search = function(req, res) {
           "====================================search====================",
           doc
         );
-        res.redirect("/auth/crud");
+        if (!doc) {
+          res.render("pages/searchResults", {
+            data: { name: "Data not found", descp: "Data not found" }
+          });
+        }
+        res.render("pages/searchResults", { data: doc });
       }
     }
   );
