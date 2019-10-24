@@ -26,7 +26,7 @@ module.exports.getCrud = function(req, res) {
   Space.find(function(err, space) {
     if (err) console.log(err);
     if (space) {
-      console.log("=================space=======================", space);
+      // console.log("=================space=======================", space);
       res.render("pages/getcrud", { data: space });
     } else {
       console.log(
@@ -100,7 +100,27 @@ module.exports.addNewEntry = function(req, res) {
         const space = newSpaceData.save();
         //console.log("New spacedata created : ", space);
 
-        console.log("================new entry=============", newentry);
+        //console.log("================new entry=============", newentry);
+        res.redirect("/auth/crud");
+      }
+    }
+  );
+};
+
+module.exports.search = function(req, res) {
+  // console.log("======================inside search================");
+  Space.findOne(
+    {
+      name: req.body.name
+    },
+    function(err, doc) {
+      if (err) {
+        throw err;
+      } else {
+        console.log(
+          "====================================search====================",
+          doc
+        );
         res.redirect("/auth/crud");
       }
     }

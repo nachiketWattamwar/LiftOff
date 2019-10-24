@@ -4,6 +4,11 @@
 </head>
 
 <body>
+  <!-- Search form -->
+  <form class="form-inline md-form mr-auto mb-12" method="POST">
+      <input name="name" id="name" class="form-control mr-sm-2" type="text" placeholder="Search by name">
+      <button class="btn aqua-gradient btn-rounded btn-sm my-0" type="submit" formaction="/auth/search">Search</button>
+    </form>
   <!-- <div class="container">
     <div class="md-form mt-0">
       <input
@@ -44,7 +49,7 @@
     <tbody> -->
       <% for(var i=0; i < data.length; i++) { %>
 
-        <form name="DisplayAndUpdateEntry" class="form-horizontal"  method="POST">
+        <form name="DisplayAndUpdateEntry" class="form-inline"  method="POST">
             <div class="form-group">
                 <label class="control-label col-sm-2" for="name"
                 >Name:</label>
@@ -96,7 +101,7 @@
     </p>
 
   </div>
-  <form name="NewEntryForm" class="form-horizontal" action="/auth/newEntry" method="POST">
+  <form name="NewEntryForm" class="form-inline" action="/auth/newEntry" method="POST">
     <div class="form-group">
         <label class="control-label col-sm-2" for="name"
         >Name:</label>
