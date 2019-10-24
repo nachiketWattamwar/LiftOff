@@ -36,6 +36,77 @@ module.exports.getCrud = function(req, res) {
   });
 };
 
+module.exports.deleteEntry = function(req, res) {
+  console.log("======================inside delete================");
+  Space.findOneAndDelete(
+    {
+      name: req.body.name
+    },
+    function(err, doc) {
+      if (err) {
+        throw err;
+      } else {
+        console.log(
+          "====================================Updated====================",
+          doc
+        );
+        res.redirect("/auth/crud");
+      }
+    }
+  );
+};
+
+module.exports.updateEntry = function(req, res) {
+  Space.findOneAndUpdate(
+    {
+      name: req.body.name
+    },
+    { $set: { descp: req.body.descp } },
+    { new: true },
+    function(err, doc) {
+      if (err) {
+        throw err;
+      } else {
+        console.log(
+          "====================================Updated====================",
+          doc
+        );
+        res.redirect("/auth/crud");
+      }
+    }
+  );
+};
+
+module.exports.addNewEntry = function(req, res) {
+  //console.log("=================inside add new entry===================");
+  Space.findOne(
+    {
+      name: req.body.name
+    },
+    function(err, space) {
+      if (err) console.log(err);
+      if (space) {
+        console.log("Data already present", space);
+      } else {
+        var newentry = {
+          name: req.body.name,
+          descp: req.body.descp
+        };
+        var newSpaceData = new Space({
+          name: req.body.name,
+          descp: req.body.descp
+        });
+
+        const space = newSpaceData.save();
+        //console.log("New spacedata created : ", space);
+
+        console.log("================new entry=============", newentry);
+        res.redirect("/auth/crud");
+      }
+    }
+  );
+};
+
 module.exports.logout = function(req, res) {
   console.log("session data ", req.session);
   res.clearCookie("MyCookieInfo");
