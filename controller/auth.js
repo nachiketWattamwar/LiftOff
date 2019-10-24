@@ -1,4 +1,5 @@
-const { User } = require('../models/user');
+const { User } = require("../models/user");
+const { Space } = require("../models/space");
 // var registeredUsers = [
 //   {
 //     id: 1,
@@ -10,16 +11,32 @@ var nasaData = require("../controller/spaceData");
 var bcrypt = require("bcrypt");
 const saltRounds = 10;
 
-module.exports.GetInfoNasa = function (req, res) {
+module.exports.GetInfoNasa = function(req, res) {
   res.render("pages/infoNasa", { data: nasaData });
 };
 
-module.exports.getDashboard = function (req, res) {
-  console.log("==============dashboard=============", req.session);
+module.exports.getDashboard = function(req, res) {
+  //console.log("==============dashboard=============", req.session);
   res.render("pages/loggedin");
 };
 
-module.exports.logout = function (req, res) {
+module.exports.getCrud = function(req, res) {
+  console.log("inside get crud function");
+
+  Space.find(function(err, space) {
+    if (err) console.log(err);
+    if (space) {
+      console.log("=================space=======================", space);
+      res.render("pages/getcrud", { data: space });
+    } else {
+      console.log(
+        "===========================inside else of crud========================="
+      );
+    }
+  });
+};
+
+module.exports.logout = function(req, res) {
   console.log("session data ", req.session);
   res.clearCookie("MyCookieInfo");
   req.session.destroy(err => {
@@ -31,11 +48,11 @@ module.exports.logout = function (req, res) {
   res.redirect("/login");
 };
 
-module.exports.getLogin = function (req, res) {
+module.exports.getLogin = function(req, res) {
   res.render("pages/login");
 };
 
-module.exports.postLogin = function (req, res) {
+module.exports.postLogin = function(req, res) {
   //console.log("Registered users:");
   //console.log(registeredUsers);
   console.log("Logging in: " + req.body.email + "/" + req.body.password);
@@ -62,44 +79,42 @@ module.exports.postLogin = function (req, res) {
   //   //next();
   //   res.redirect("/privateRoutes/dashboard");
   // }
-  User.findOne({
-    email: req.body.email
-  }, function (err, user) {
-    if (err) {
-      console.log(err);
-      console.log("User not found");
-
+  User.findOne(
+    {
+      email: req.body.email
+    },
+    function(err, user) {
+      if (err) {
+        console.log(err);
+        console.log("User not found");
+      }
+      if (user) {
+        console.log(user);
+        bcrypt.compare(req.body.password, user.password, function(err, result) {
+          if (err) {
+            console.log(err);
+          }
+          if (!result) {
+            console.log("Passwords dont match");
+            res.render("pages/invaliduser");
+          } else {
+            req.session.email = user.email;
+            res.cookie("MyCookieInfo", user);
+            console.log("session info is :");
+            console.log(req.session);
+            //next();
+            res.redirect("/privateRoutes/dashboard");
+          }
+        });
+      } else {
+        console.log("User not found");
+        res.render("pages/invaliduser");
+      }
     }
-    if (user) {
-      console.log(user);
-      bcrypt.compare(req.body.password, user.password, function (err, result) {
-        if (err) {
-          console.log(err);
-        }
-        if(!result){
-          console.log("Passwords dont match");
-          res.render("pages/invaliduser");
-        }
-        else {
-          req.session.email = user.email;
-          res.cookie("MyCookieInfo", user);
-          console.log("session info is :");
-          console.log(req.session);
-          //next();
-          res.redirect("/privateRoutes/dashboard");
+  );
+};
 
-        }
-      });
-    }
-    else{
-      console.log("User not found");
-      res.render("pages/invaliduser");
-    }
-  });
-}
-
-
-module.exports.postSignup = function (req, res) {
+module.exports.postSignup = function(req, res) {
   console.log("inside signup");
 
   if (!req.body.email || !req.body.password) {
@@ -107,42 +122,42 @@ module.exports.postSignup = function (req, res) {
     res.send("Invalid details!");
   } else {
     //Check if User already exists with the email
-    User.findOne({
-      email: req.body.email
-    }, function (err, user) {
-      if (err)
-        console.log(err);
-      if (user) {
-        console.log("User already registered");
-        res.render("pages/registered");
+    User.findOne(
+      {
+        email: req.body.email
+      },
+      function(err, user) {
+        if (err) console.log(err);
+        if (user) {
+          console.log("User already registered");
+          res.render("pages/registered");
+        } else {
+          // Register a new user.
+          var salt = bcrypt.genSaltSync(saltRounds);
+          var hash = bcrypt.hashSync(req.body.password, salt);
+          var newUser = {
+            name: req.body.name,
+            email: req.body.email,
+            password: hash,
+            phone: req.body.phone
+          };
+          var newUserMongo = new User({
+            name: req.body.name,
+            email: req.body.email,
+            password: hash,
+            phone: req.body.phone
+          });
+          req.session.email = newUser.email;
+          res.cookie("MyCookieInfo", newUser);
+          const user = newUserMongo.save();
+          console.log("New User created : ", user);
+          //res.sendStatus(200).end();
+          //registeredUsers.push(newUser);
+          console.log("session  info:");
+          console.log(req.session);
+          res.redirect("/login");
+        }
       }
-      else {
-        // Register a new user.
-        var salt = bcrypt.genSaltSync(saltRounds);
-        var hash = bcrypt.hashSync(req.body.password, salt);
-        var newUser = {
-          name: req.body.name,
-          email: req.body.email,
-          password: hash,
-          phone: req.body.phone
-        };
-        var newUserMongo = new User({
-          name: req.body.name,
-          email: req.body.email,
-          password: hash,
-          phone: req.body.phone
-        });
-        req.session.email = newUser.email;
-        res.cookie("MyCookieInfo", newUser);
-        const user = newUserMongo.save();
-        console.log("New User created : ", user);
-        //res.sendStatus(200).end();
-        //registeredUsers.push(newUser);
-        console.log("session  info:");
-        console.log(req.session);
-        res.redirect("/login");
-      }
-
-    });
+    );
   }
 };

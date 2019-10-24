@@ -10,4 +10,7 @@ router.post("/signup", routeNames.postSignup);
 //logging out
 router.get("/logout", routeNames.logout);
 
+//crud
+router.get("/crud", routeNames.getCrud);
+
 module.exports = router;
