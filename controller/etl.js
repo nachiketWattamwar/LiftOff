@@ -11,24 +11,8 @@ var myfunc = function() {
   mongoose.set("debug", true);
 
   const agencySchema = new Schema({
-    agency: String,
-    count: Number,
-    ucode: String,
-    state_code: String,
-    type: String,
-    class: String,
-    tstart: String,
-    tstop: String,
-    short_name: String,
     name: String,
-    location: String,
-    longitude: String,
-    latitude: String,
-    error: String,
-    parent: String,
-    short_english_name: String,
-    english_name: String,
-    unicode_name: String
+    descp: String,
   });
 
   const Agency = mongoose.model("Agency", agencySchema);
@@ -48,7 +32,6 @@ var myfunc = function() {
         k => ["_id", "__v", "count"].indexOf(k) === -1
       );
 
-      console.log("above head");
       console.log(headers);
 
       await new Promise((resolve, reject) => {
@@ -61,6 +44,11 @@ var myfunc = function() {
           .on("error", reject)
           .on("data", async doc => {
             stream.pause();
+            console.log("========================================================");
+            console.log(doc['name']);
+            doc['name'] = doc['name'].toUpperCase();
+            console.log(doc)
+            console.log("=========================================================");
             buffer.push(doc);
             counter++;
             //log(doc);

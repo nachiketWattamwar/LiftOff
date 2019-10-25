@@ -7,7 +7,7 @@ const { Schema } = require("./controller/etl");
 var bodyParser = require("body-parser");
 var cookieParser = require("cookie-parser");
 var session = require("express-session");
-var { myfunc } = require("../asgmnt2/controller/etl");
+var { myfunc } = require("../LiftOff/controller/etl");
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
