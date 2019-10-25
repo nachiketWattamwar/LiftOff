@@ -12,7 +12,7 @@ var myfunc = function() {
 
   const agencySchema = new Schema({
     name: String,
-    descp: String,
+    descp: String
   });
 
   const Agency = mongoose.model("Agency", agencySchema);
@@ -44,11 +44,15 @@ var myfunc = function() {
           .on("error", reject)
           .on("data", async doc => {
             stream.pause();
-            console.log("========================================================");
-            console.log(doc['name']);
-            doc['name'] = doc['name'].toUpperCase();
-            console.log(doc)
-            console.log("=========================================================");
+            console.log(
+              "========================================================"
+            );
+            console.log(doc["name"]);
+            doc["name"] = doc["name"].toUpperCase();
+            console.log(doc);
+            console.log(
+              "========================================================="
+            );
             buffer.push(doc);
             counter++;
             //log(doc);
@@ -80,7 +84,7 @@ var myfunc = function() {
     } catch (e) {
       console.error(e);
     } finally {
-      process.exit();
+      //process.exit();
     }
   })();
 };

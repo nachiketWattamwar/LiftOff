@@ -9,6 +9,6 @@ const Spaceschema = new mongoose.Schema({
   }
 });
 
-var Space = mongoose.model("space", Spaceschema);
+var Space = mongoose.model("agency", Spaceschema);
 
 module.exports = { Space };

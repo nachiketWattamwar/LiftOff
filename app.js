@@ -54,5 +54,5 @@ app.use("/auth", require("./routes/auth"));
 app.use("/privateRoutes", checkUser, require("./routes/privateRoutes"));
 app.use("/login", getLogin);
 app.use("/signup", getSignup);
-app.listen(3000);
-console.log("listening on  3000");
+app.listen(3001);
+console.log("listening on  3001");
