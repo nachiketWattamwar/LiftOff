@@ -16,5 +16,27 @@ const Spaceschemabudget = new mongoose.Schema({
 
 var Spacebudget = mongoose.model("nasabudget", Spaceschemabudget);
 
-module.exports = { Space: Space, Spacebudget: Spacebudget };
+const MarsSchema = new mongoose.Schema({
+  project: {
+    type: String
+  },
+  budget: {
+    type: Number
+  }
+});
+
+var Mars = mongoose.model("mars", MarsSchema);
+
+const PlanetSchema = new mongoose.Schema({
+  name: {
+    type: String
+  },
+  distance: {
+    type: Number
+  }
+});
+
+var Planet = mongoose.model("planets", PlanetSchema);
+
+module.exports = { Space: Space, Spacebudget: Spacebudget, Mars: Mars, Planet: Planet };
 // module.exports = { Spacebudget };

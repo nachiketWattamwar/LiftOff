@@ -21,6 +21,7 @@ class App extends Component {
   render() {
     return (
       <div>
+      <h1>Dashboard</h1>
         {/* <header className='App-header'>
           <img src={logo} className='App-logo' alt='logo' />
           <h1 className='App-title'>Call API</h1>

@@ -5,7 +5,7 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 const { mongoose } = require("../backend/db/mongoose");
-const { Space, Spacebudget } = require("../backend/models/space");
+const { Space, Spacebudget, Mars, Planet } = require("../backend/models/space");
 
 app.get("/nasaData", (req, res) => {
   res.setHeader("Content-Type", "application/json");
@@ -31,6 +31,46 @@ app.get("/nasaspacebudget", (req, res) => {
     });
 
     res.send(budgets);
+  });
+});
+
+app.get("/marsdata", (req, res) => {
+  res.setHeader("Content-Type", "application/json");
+  console.log("Near Mars >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+  Mars.find({}, function(err, nasaData) {
+    let budgets = nasaData.map(n => {
+      console.log("new budget is ", n.budget);
+      return n.budget;
+    });
+
+    let projects = nasaData.map(n => {
+      console.log("new projects is ", n.project);
+      return n.project;
+    });
+
+    const marsData = [budgets, projects];
+
+    res.send(marsData);
+  });
+});
+
+app.get("/planetData", (req, res) => {
+  res.setHeader("Content-Type", "application/json");
+  console.log("Near Mars >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+  Planet.find({}, function(err, nasaData) {
+    let distances = nasaData.map(n => {
+      console.log("distance is ", n.budget);
+      return n.distance;
+    });
+
+    let names = nasaData.map(n => {
+      console.log("planet name is ", n.project);
+      return n.name;
+    });
+
+    const planetData = [names, distances];
+
+    res.send(planetData);
   });
 });
 
