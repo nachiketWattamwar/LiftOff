@@ -34,7 +34,7 @@ let dataBar2 = {
 };
 
 let dataBar3 = {
-  labels: ["2015", "2016", "2017", "2018", "2019"],
+  //labels: ["2015", "2016", "2017", "2018", "2019"],
   datasets: [
     {
       label: "Project Budget (in billions)",
@@ -49,10 +49,10 @@ let dataBar3 = {
 };
 
 let linedata1 = {
-  labels: ["January", "February", "March", "April", "May", "June", "July"],
+  labels: ["1950s", "1960s", "1970s", "1980s", "1990s", "2000s", "2010s"],
   datasets: [
     {
-      label: "Nasa satellites launches",
+      label: "satellites launches success rate (in %)",
       fill: false,
       lineTension: 0.1,
       backgroundColor: ["rgba(75,192,192,0.4)","rgba(75,192,192,0.4)","rgba(75,192,192,0.4)","rgba(75,100,11,1)","rgba(75,192,192,0.4)","rgba(75,192,192,0.4)","rgba(75,192,192,0.4)"],
@@ -75,38 +75,38 @@ let linedata1 = {
   ]
 };
 
-let linedata2 = {
-  labels: ["January", "February", "March", "April", "May", "June", "July"],
-  datasets: [
-    {
-      label: "Nasa satellites launches",
-      fill: true,
-      lineTension: 0.1,
-      backgroundColor: "rgba(75,192,192,0.4)",
-      borderColor: "rgba(75,192,192,1)",
-      borderCapStyle: "butt",
-      borderDash: [],
-      borderDashOffset: 0.0,
-      borderJoinStyle: "miter",
-      pointBorderColor: "rgba(75,192,192,1)",
-      pointBackgroundColor: "#fff",
-      pointBorderWidth: 1,
-      pointHoverRadius: 5,
-      pointHoverBackgroundColor: "rgba(75,192,192,1)",
-      pointHoverBorderColor: "rgba(220,220,220,1)",
-      pointHoverBorderWidth: 2,
-      pointRadius: 1,
-      pointHitRadius: 10,
-      data: []
-    }
-  ]
-};
+// let linedata2 = {
+//   labels: ["January", "February", "March", "April", "May", "June", "July"],
+//   datasets: [
+//     {
+//       label: "Nasa satellites launches",
+//       fill: true,
+//       lineTension: 0.1,
+//       backgroundColor: "rgba(75,192,192,0.4)",
+//       borderColor: "rgba(75,192,192,1)",
+//       borderCapStyle: "butt",
+//       borderDash: [],
+//       borderDashOffset: 0.0,
+//       borderJoinStyle: "miter",
+//       pointBorderColor: "rgba(75,192,192,1)",
+//       pointBackgroundColor: "#fff",
+//       pointBorderWidth: 1,
+//       pointHoverRadius: 5,
+//       pointHoverBackgroundColor: "rgba(75,192,192,1)",
+//       pointHoverBorderColor: "rgba(220,220,220,1)",
+//       pointHoverBorderWidth: 2,
+//       pointRadius: 1,
+//       pointHitRadius: 10,
+//       data: []
+//     }
+//   ]
+// };
 
 let planetData = {
-  labels: ["January", "February", "March", "April", "May", "June", "July"],
+  //labels: ["January", "February", "March", "April", "May", "June", "July"],
   datasets: [
     {
-      label: "Distance from Sun",
+      label: "Distance from Sun (in million-miles)",
       fill: true,
       lineTension: 0.1,
       backgroundColor: "rgba(75,192,192,0.4)",
@@ -136,7 +136,7 @@ export default class Dashboard extends Component {
       //name: "reactApp",
       data1: linedata1,
       dataBar1: dataBar1,
-      data2: linedata2,
+      //data2: linedata2,
       dataBar2: dataBar2,
       dataBar3: dataBar3,
       planetData: planetData
@@ -198,22 +198,21 @@ export default class Dashboard extends Component {
         planetData: planetData
       });
     });
-
   }
   render() {
     return (
       <div class='row'>
-      <div class="col-md-6">
-      <Line
-        width='500px'
-        height='200px'
-        data={this.state.data1}
-        options={{
-          maintainAspectRatio: true,
-          responsive: true
-        }}
-      />
-      {/* <Line
+        <div class='col-md-6'>
+          <Line
+            width='500px'
+            height='200px'
+            data={this.state.data1}
+            options={{
+              maintainAspectRatio: true,
+              responsive: true
+            }}
+          />
+          {/* <Line
         width='500px'
         height='80px'
         data={this.state.data}
@@ -222,18 +221,18 @@ export default class Dashboard extends Component {
           responsive: true
         }}
       /> */}
-      </div>
-      <div class="col-md-6">
-      <Bar
-        width='500px'
-        height='200px'
-        data={this.state.dataBar1}
-        options={{
-          maintainAspectRatio: true,
-          responsive: true
-        }}
-      />
-      {/* <Bar
+        </div>
+        <div class='col-md-6'>
+          <Bar
+            width='500px'
+            height='200px'
+            data={this.state.dataBar1}
+            options={{
+              maintainAspectRatio: true,
+              responsive: true
+            }}
+          />
+          {/* <Bar
         width='500px'
         height='80px'
         data={this.state.dataBar}
@@ -242,33 +241,31 @@ export default class Dashboard extends Component {
           responsive: true
         }}
       /> */}
-      </div>
+        </div>
 
-      <div class="col-md-6">
-      <Bar
-        width='500px'
-        height='200px'
-        data={this.state.dataBar3}
-        options={{
-          maintainAspectRatio: true,
-          responsive: true
-        }}
-      />
-      </div>
+        <div class='col-md-6'>
+          <Bar
+            width='500px'
+            height='200px'
+            data={this.state.dataBar3}
+            options={{
+              maintainAspectRatio: true,
+              responsive: true
+            }}
+          />
+        </div>
 
-      <div class="col-md-6">
-        <Line
-          width='500px'
-          height='200px'
-          data={this.state.planetData}
-          options={{
-            maintainAspectRatio: true,
-            responsive: true
-          }}
-        />
-      </div>
-
-
+        <div class='col-md-6'>
+          <Line
+            width='500px'
+            height='200px'
+            data={this.state.planetData}
+            options={{
+              maintainAspectRatio: true,
+              responsive: true
+            }}
+          />
+        </div>
       </div>
     );
   }
