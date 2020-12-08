@@ -15,7 +15,7 @@
     "ejs": "^2.5.5",
     "express": "^4.17.1",
     "express-session": "^1.16.2",
-    "fast-csv": "^3.4.0",
+    "fast-csv": "^4.3.6",
     "mongoose": "^5.7.5",
     "mz": "^2.7.0",
     "nodemon": "^1.19.2",
